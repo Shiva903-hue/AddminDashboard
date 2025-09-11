@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import ExcelExport from "./Exports/ExcelExport";
 
 export default function Dashboard() {
   const [activeItem, setActiveItem] = useState("Reports");
@@ -38,7 +39,7 @@ export default function Dashboard() {
           </button>
         </Link>
 
-       
+       <ExcelExport/>
       </nav>
     </section>
   );

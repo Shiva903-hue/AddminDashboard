@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { User, UserPlus, Clock, FileText, Users, Menu, X } from 'lucide-react';
-import Login from '../Component/Auth/Login';
+import AdminForm from '../Component/Auth/AdminForm';
 import SignUp from '../Component/Auth/Signup';
 import PendingApproval from '../Component/PendingApprovle';
 import Reports from '../Component/Reports';
@@ -26,7 +26,7 @@ const Dashboard = () => {
             <h1 className="text-3xl font-bold text-gray-800">Welcome to Admin Dashboard</h1>
           </div>
         )}
-        {activeSection === "add-admin" && <Login/>}
+        {activeSection === "add-admin" && <AdminForm/>}
         {activeSection === "pending-approval" && <PendingApproval />}
         {activeSection === "reports" && <Reports />}
         {activeSection === "user-manager" && <SignUp />}

@@ -11,8 +11,9 @@ export default function PendingApproval() {
   // Fetch vouchers from server
   const fetchData = async () => {
     try {
-      const res = await fetch("http://localhost:5000/requests");
+      const res = await fetch("http://localhost:5001/get/requests");
       const data = await res.json();
+      // if(!data.v_status ==="APPROVE" || !data.v_status === "PENDING" )
       setDatalength(data.length);
       setVouchers(data);
     } catch (error) {
@@ -33,11 +34,11 @@ export default function PendingApproval() {
   }, []);
 
   const handleApprove = (voucherId) => {
-    setVouchers(prev => prev.filter(voucher => voucher.voucherId !== voucherId));
+    setVouchers(prev => prev.filter(voucher => voucher.va_id !== voucherId));
   };
 
   const handleReject = (voucherId) => {
-    setVouchers(prev => prev.filter(voucher => voucher.voucherId !== voucherId));
+    setVouchers(prev => prev.filter(voucher => voucher.va_id !== voucherId));
   };
 
   if (loading) {
@@ -69,7 +70,7 @@ export default function PendingApproval() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {vouchers.map((voucher) => (
           <VoucherCard
-            key={voucher.voucherId}
+            key={voucher.va_id}
             voucherData={voucher}
             onApprove={handleApprove}
             onReject={handleReject}
